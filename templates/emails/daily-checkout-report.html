@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      body { font-family: Arial, Helvetica, sans-serif; }
+      .container { margin: 0 auto; }
+      h1 { font-size: 18px; margin: 0 0 10px; }
+      h2 { font-size: 16px; margin: 20px 0 8px; }
+      h3 { font-size: 14px; margin: 14px 0 6px; }
+      p { margin: 6px 0; }
+      table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+      th, td { border: 1px solid #ccc; padding: 6px; font-size: 12px; }
+      th { background: #f3f3f3; text-align: left; }
+      .note { font-size: 12px; color: #555; }
+      .muted { color: #666; }
+      .divider { height: 1px; background: #e5e5e5; margin: 16px 0; }
+      .pill { display: inline-block; background: #eef5ff; border: 1px solid #d7e6ff; padding: 2px 6px; border-radius: 4px; font-size: 11px; }
+      ul { margin: 8px 0 8px 18px; }
+      li { margin: 4px 0; }
+      .section-title { display: flex; align-items: center; gap: 6px; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <p>Dear Reservations Team,</p>
+      <p><strong>Namaste & Greetings from World Choice Hotels !!</strong></p>
+      <p>
+        Please find below the <strong>Daily Guest Check‑Out Report</strong> for <strong>{{Date}}</strong>.
+      </p>
+
+      <h2 class="section-title">🔴 Guests Checked‑Out on ({{Date}})</h2>
+      {{CheckOutTable}}
+
+      <h2 class="section-title">📌 Notes for Team</h2>
+      <ol>
+        <li><strong>GST Invoices</strong> – Please ensure hotels upload GST invoices for these check‑outs via <strong>WorldCRS</strong> or GST upload link.
+          <ul>
+            <li>Raise invoice in the name of <strong>World Choice Hotels Pvt. Ltd.</strong></li>
+            <li>Samta Enclave, Near Mother Dairy, Qutub Vihar, Phase 1, <strong>Sector 19 Dwarka</strong>, New Delhi – 110071, India</li>
+            <li>Upload invoices after guest check‑out using your <strong>WorldCRS</strong> login or the daily <strong>GST upload link</strong>.</li>
+            <li>Alternatively, hotels can email invoices to <strong>accounts@wchotels.com</strong> / <strong>payments@wchotels.com</strong> with <strong>Booking ID in subject line</strong>.</li>
+          </ul>
+        </li>
+        <li><strong>Pending Payments</strong> – Cross‑check with Accounts if OTA or Direct Guest payments are pending.</li>
+        <li><strong>System Access</strong> – Hotels can log in at <strong>www.WorldCRS.com</strong> to:
+          <ul>
+            <li>Upload GST Invoices</li>
+            <li>Check Payments</li>
+            <li>View Guest & Reservation Details</li>
+            <li>Update Photos & Videos</li>
+            <li>Manage Bookings & Modifications</li>
+          </ul>
+        </li>
+        <li><strong>Follow‑Up</strong> – Reservation team to confirm with hotels about any <strong>Pending Payments</strong> or <strong>GST uploads</strong>.</li>
+      </ol>
+
+      <div class="divider"></div>
+      <p><strong>With Regards,</strong></p>
+      <p><strong>
+        World Choice Hotels Pvt. Ltd.
+        </strong>
+      </p>
+      <p><strong>
+        Centralized Reservations Team
+        </strong>
+      </p>
+      <br>
+      <p>
+        ☎️ +91 9954363505, 7399888822, 9999880833, 9998808803</p>
+      <p>
+        ✉️ <strong>reservations@wchotels.com</strong> | <strong>wecare@wchotels.com</strong></p>
+      <p>
+        🌐 <strong>www.wchotels.com</strong> | <strong>www.worldchoicehotels.in</strong>
+      </p>
+      <br>
+      <p>
+        <strong>Delhi Head Office:</strong><br>
+        Samta Enclave, Near Mother Dairy, Qutub Vihar, Phase 1, Sector 19 Dwarka, New Delhi-110071, India
+      </p>
+      <p>
+        <strong>North East Office:</strong><br>
+        Purna Saikia Complex, NH–37, Sonapur, Guwahati, Kamrup (Metro), Assam - 782402, India
+      </p>
+    </div>
+  </body>
+  </html>
+
+

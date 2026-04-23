@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      .container { margin: 0 auto; }
+      h1 { font-size: 18px; margin: 0 0 10px; text-decoration: underline; }
+      h2 { font-size: 16px; margin: 16px 0 8px; }
+      p { margin: 6px 0; }
+      table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+      th, td { border: 1px solid #ccc; padding: 6px; font-size: 12px; }
+      th { background: #f3f3f3; text-align: left; }
+      .note { font-size: 12px; color: #555; }
+      .muted { color: #666; }
+      .divider { height: 1px; background: #e5e5e5; margin: 16px 0; }
+      ul { margin: 8px 0 8px 18px; }
+      li { margin: 4px 0; }
+      .icon { display: inline-block; margin-right: 8px; }
+      .target-icon { width: 12px; height: 12px; border: 2px solid #333; border-radius: 50%; position: relative; }
+      .target-icon::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; background: #333; border-radius: 50%; }
+      .clipboard-icon { width: 12px; height: 12px; border: 2px solid #333; position: relative; }
+      .clipboard-icon::after { content: ''; position: absolute; top: 1px; left: 1px; width: 8px; height: 2px; background: #333; }
+      .phone-icon { width: 12px; height: 12px; border: 2px solid #333; border-radius: 2px; position: relative; }
+      .phone-icon::after { content: ''; position: absolute; top: 2px; left: 2px; width: 4px; height: 6px; background: #333; }
+      .email-icon { width: 12px; height: 12px; border: 2px solid #333; position: relative; }
+      .email-icon::after { content: '✉'; position: absolute; top: -2px; left: 1px; font-size: 8px; }
+      .whatsapp-icon { width: 12px; height: 12px; border: 2px solid #333; border-radius: 2px; position: relative; }
+      .whatsapp-icon::after { content: 'W'; position: absolute; top: -2px; left: 2px; font-size: 8px; font-weight: bold; }
+      .globe-icon { width: 12px; height: 12px; border: 2px solid #333; border-radius: 50%; position: relative; }
+      .globe-icon::after { content: '🌐'; position: absolute; top: -2px; left: 1px; font-size: 8px; }
+      .document-icon { width: 12px; height: 12px; border: 2px solid #333; position: relative; }
+      .document-icon::after { content: '📄'; position: absolute; top: -2px; left: 1px; font-size: 8px; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <p><strong>Dear Team,</strong></p>
+      <p><strong>Namaste & Greetings from World Choice Hotels !!</strong></p>
+      <p>
+        Please find below the <strong>Guest Check-Out Report</strong> for <strong>{{Date}}</strong> — listing guests who will be checking out tomorrow.
+      </p>
+      <p>
+        This report is generated every night at <strong>23:30 hours</strong> to help our hotel partners and reservations team track upcoming departures, confirm payments, and ensure GST invoices and billing are completed accurately.
+      </p>
+
+      <div class="divider"></div>
+      
+      <h2>
+        <span class="icon target-icon"></span>
+        Guests Checking-Out Tomorrow – {{Date}}
+      </h2>
+      {{CheckOutTable}}
+
+      <div class="divider"></div>
+      
+      <h2>
+        <span class="icon clipboard-icon"></span>
+        Notes & Important Instructions
+      </h2>
+      
+      <ol class="note">
+        <li><strong>GST Invoices:</strong>
+          <ul>
+            <li>World Choice Hotels Pvt. Ltd. automatically sends GST Invoices directly to guests for all OTA and CRS bookings after check-out.</li>
+            <li><strong>For hotels to provide a printed copy of the invoice:</strong>
+              <ul>
+                <li>Log in to your <strong>WorldCRS Account</strong> (www.worldcrs.com) and download the invoice.</li>
+                <li>Contact our team via phone: <strong>+91 9999880833, 7399888844, 9954363505, 7399888822</strong>.</li>
+                <li>Contact our team via email: <strong>wecare@wchotels.com</strong>.</li>
+                <li>Send a <strong>WhatsApp message</strong> to our Hotel Partner WhatsApp Group, mentioning the <strong>Guest Name and Booking ID</strong>.</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        
+        <li><strong>Payment Verification:</strong>
+          <ul>
+            <li>For any questions regarding GST, Payment, or GST Invoices, contact our <strong>Reservation Team</strong>.</li>
+            <li>For any pending payments, coordinate with our <strong>Accounts Department</strong> at <strong>accounts@wchotels.com</strong> and <strong>wecare@wchotels.com</strong>.</li>
+          </ul>
+        </li>
+        
+        <li><strong>Front Office Coordination:</strong>
+          <ul>
+            <li><strong>Ensure that check-out timing and meal plan settlements are accurately recorded.</strong></li>
+            <li><strong>Confirm that any additional charges (laundry, minibar, etc.) are updated in the final billing.</strong></li>
+            <li>Kindly create our company details in your <strong>PMS (Property Management System)</strong> and ensure all guests are tagged under the company. When setting up, provide complete and accurate information.</li>
+          </ul>
+        </li>
+        
+        <li><strong>Early Check-Out or Stay Reduction:</strong>
+          <ul>
+            <li>If a guest requests early check-out or stay reduction, please inform our reservations team immediately.</li>
+            <li>Coordinate with the front office to ensure proper billing adjustments are made.</li>
+          </ul>
+        </li>
+        
+        <li><strong>Booking Modifications and Upgrades:</strong>
+          <ul>
+            <li>Any requests for extending bookings or upgrading should be coordinated through our reservations team.</li>
+            <li>Ensure all modifications are properly documented in the system.</li>
+          </ul>
+        </li>
+        
+        <li><strong>Compliance and OTA Policies:</strong>
+          <ul>
+            <li>Early check-out policies are set by OTAs and we must comply with their requirements.</li>
+            <li>Ensure all OTA-specific procedures are followed for check-outs.</li>
+          </ul>
+        </li>
+        
+        <li><strong>System Access:</strong>
+          <ul>
+            <li>Access your account at <strong>www.worldcrs.com</strong> to view check-outs, upload invoices, manage rates, update content, and track payments.</li>
+            <li>Ensure all check-out related data is properly updated in the system.</li>
+          </ul>
+        </li>
+        
+        <li><strong>Follow-Up:</strong>
+          <ul>
+            <li>The Reservations Team will review tomorrow's check-outs for each property and confirm:</li>
+            <li>Guest departures and invoice uploads</li>
+            <li>Pending payments or reconciliation required</li>
+            <li>Any check-out-related remarks from the front office</li>
+          </ul>
+        </li>
+        
+        <li><strong>Support & Escalations:</strong>
+          <ul>
+            <li>For any clarification or issue regarding tomorrow's departures, please reach out to our support team via:</li>
+            <li>
+              <span class="icon phone-icon"></span>
+              <strong>+91 9999880833, 7399888844, 9954363505, 7399888822</strong>
+            </li>
+            <li>
+              <span class="icon email-icon"></span>
+              <strong>wecare@wchotels.com</strong>
+            </li>
+            <li>
+              <span class="icon whatsapp-icon"></span>
+              <strong>WhatsApp Group (send Guest Name & Booking ID)</strong>
+            </li>
+          </ul>
+        </li>
+      </ol>
+
+      <div class="divider"></div>
+        <h2>
+            <span class="icon document-icon"></span>
+            Reminder
+        </h2>
+      <p>Please ensure your front desk team coordinates with our reservation team for smooth check-outs.</p>
+      <p>Accurate billing and timely invoice upload enhance guest satisfaction and help maintain compliance.</p>
+
+      <div class="divider"></div>
+      
+      <p><strong>With Regards,</strong></p>
+      <p><strong>World Choice Hotels Pvt. Ltd.</strong></p>
+      <p><strong>Centralized Reservations Team</strong></p>
+      <br>
+      <p>
+        ☎️ +91 9954363505, 7399888822, 9999880833, 9998808803</p>
+      <p>
+        ✉️ <strong>reservations@wchotels.com</strong> | <strong>partner@wchotels.com</strong></p>
+      <p>
+        🌐 <strong>www.wchotels.com</strong> | <strong>www.worldchoicehotels.com</strong>
+      </p>
+      <br>
+      <p>
+        <strong>Delhi Head Office:</strong><br>
+        Samta Enclave, Near Mother Dairy, Qutub Vihar, Phase 1, Sector 19 Dwarka, New Delhi-110071, India
+      </p>
+      <p>
+        <strong>North East Office:</strong><br>
+        Purna Saikia Complex, NH–37, Sonapur, Guwahati, Kamrup (Metro), Assam - 782402, India
+      </p>
+    </div>
+  </body>
+</html>

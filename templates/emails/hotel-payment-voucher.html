@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f5f5f5;">
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td align="center" style="padding: 20px;">
+            <table width="600" border="0" cellspacing="0" cellpadding="0" style="background-color: #ffffff; border: 1px solid #e0e0e0; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+                <tr>
+                    <td style="padding: 0 30px 20px 30px;">
+                        <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 0;">
+                        <p style="font-size: 14px; color: #333333; margin: 20px 0 5px 0; font-weight: bold;">Dear Hotelier,</p>
+                        <p style="font-size: 13px; color: #555555; font-style: italic; margin: 0;">
+                            Please note that we have successfully made the payment against the below-mentioned booking vouchers of {{companyName}} Pvt. Ltd.
+                        </p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="padding: 0 30px 20px 30px;">
+                        <h2 style="font-size: 15px; color: #333333; margin: 0 0 10px 0;">Transaction Details</h2>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-size: 13px; color: #333333; border: 1px solid #e0e0e0;">
+                            <tr>
+                                <td style="padding: 8px 12px; border-bottom: 1px solid #e0e0e0; width: 40%; background-color: #f7f7f7;"><strong>NAME OF HOTEL & CITY</strong></td>
+                                <td style="padding: 8px 12px; border-bottom: 1px solid #e0e0e0;">{{hotelName}}, {{hotelLocation}}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px 12px; border-bottom: 1px solid #e0e0e0; background-color: #f7f7f7;"><strong>TRANSACTION DATE</strong></td>
+                                <td style="padding: 8px 12px; border-bottom: 1px solid #e0e0e0;">{{transactionDate}}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px 12px; border-bottom: 1px solid #e0e0e0; background-color: #f7f7f7;"><strong>MODE OF PAYMENT</strong></td>
+                                <td style="padding: 8px 12px; border-bottom: 1px solid #e0e0e0;">{{paymentMode}}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px 12px; border-bottom: 1px solid #e0e0e0; background-color: #f7f7f7;"><strong>TRANSACTION AMOUNT</strong></td>
+                                <td style="padding: 8px 12px; border-bottom: 1px solid #e0e0e0;">{{transactionAmount}}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px 12px; border-bottom: 1px solid #e0e0e0; background-color: #f7f7f7;"><strong>BANK REFERENCE NO.</strong></td>
+                                <td style="padding: 8px 12px; border-bottom: 1px solid #e0e0e0;">{{bankReference}}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px 12px; border-bottom: 1px solid #e0e0e0; background-color: #f7f7f7;"><strong>ACCOUNT NO.</strong></td>
+                                <td style="padding: 8px 12px; border-bottom: 1px solid #e0e0e0;">{{hotelAccountNumber}}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px 12px; border-bottom: 1px solid #e0e0e0; background-color: #f7f7f7;"><strong>IFSC CODE</strong></td>
+                                <td style="padding: 8px 12px; border-bottom: 1px solid #e0e0e0;">{{hotelIfscCode}}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px 12px; border-bottom: 1px solid #e0e0e0; background-color: #f7f7f7;"><strong>ACCOUNT NAME</strong></td>
+                                <td style="padding: 8px 12px; border-bottom: 1px solid #e0e0e0;">{{hotelAccountName}}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px 12px; border-bottom: 1px solid #e0e0e0; background-color: #f7f7f7;"><strong>BANK NAME</strong></td>
+                                <td style="padding: 8px 12px; border-bottom: 1px solid #e0e0e0;">{{hotelBankName}}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px 12px; background-color: #f7f7f7;"><strong>GST NO.</strong></td>
+                                <td style="padding: 8px 12px;">{{hotelGstNumber}}</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="padding: 0 30px 20px 30px;">
+                        <h2 style="font-size: 15px; color: #333333; margin: 0 0 10px 0;">Payout Summary</h2>
+                        <ul style="margin: 0 0 10px 18px; padding: 0; color: #333; font-size: 13px;">
+                            <li><strong>Prepaid Confirmed Bookings – Amount Paid:</strong> {{transactionAmount}}</li>
+                            <li><strong>Total Paid:</strong> {{transactionAmount}}</li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="padding: 0 30px 20px 30px;">
+                        <h2 style="font-size: 15px; color: #333333; margin: 0 0 10px 0;">Booking Breakdown</h2>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border: 1px solid #e0e0e0; border-collapse: collapse; font-size: 13px; color: #333333;">
+                            <thead>
+                                <tr style="background-color: #e8f3ff;">
+                                    <th style="padding: 8px 12px; border: 1px solid #e0e0e0; text-align: left; font-weight: bold;">BOOKING ID / VOUCHER</th>
+                                    <th style="padding: 8px 12px; border: 1px solid #e0e0e0; text-align: left; font-weight: bold;">GUEST NAME</th>
+                                    <th style="padding: 8px 12px; border: 1px solid #e0e0e0; text-align: left; font-weight: bold;">CHECK-IN</th>
+                                    <th style="padding: 8px 12px; border: 1px solid #e0e0e0; text-align: left; font-weight: bold;">CHECK-OUT</th>
+                                    <th style="padding: 8px 12px; border: 1px solid #e0e0e0; text-align: left; font-weight: bold;">NIGHTS</th>
+                                    <th style="padding: 8px 12px; border: 1px solid #e0e0e0; text-align: left; font-weight: bold;">ROOMS</th>
+                                    <th style="padding: 8px 12px; border: 1px solid #e0e0e0; text-align: left; font-weight: bold;">AMOUNT</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 8px 12px; border: 1px solid #e0e0e0;">{{bookingId}}</td>
+                                    <td style="padding: 8px 12px; border: 1px solid #e0e0e0;">{{customerName}}</td>
+                                    <td style="padding: 8px 12px; border: 1px solid #e0e0e0;">{{checkinDate}}</td>
+                                    <td style="padding: 8px 12px; border: 1px solid #e0e0e0;">{{checkoutDate}}</td>
+                                    <td style="padding: 8px 12px; border: 1px solid #e0e0e0;">{{numNights}}</td>
+                                    <td style="padding: 8px 12px; border: 1px solid #e0e0e0;">{{numRooms}}</td>
+                                    <td style="padding: 8px 12px; border: 1px solid #e0e0e0;">{{transactionAmount}}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6" style="padding: 8px 12px; border: 1px solid #e0e0e0; text-align: right; font-weight: bold; font-size: 13px;">Grand Total</td>
+                                    <td style="padding: 8px 12px; border: 1px solid #e0e0e0; font-weight: bold; font-size: 13px;">{{grandTotal}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="padding: 0 30px 20px 30px;">
+                        <h2 style="font-size: 15px; color: #333333; margin: 15px 0 10px 0;">Bank Details Registered with us for Payment:</h2>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-size: 13px; color: #333333; border: 1px solid #e0e0e0;">
+                            <tr>
+                                <td style="padding: 8px 12px; border-bottom: 1px solid #e0e0e0; background-color: #f7f7f7; width: 40%;"><strong>Beneficiary Name</strong></td>
+                                <td style="padding: 8px 12px; border-bottom: 1px solid #e0e0e0;">{{hotelAccountName}}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px 12px; border-bottom: 1px solid #e0e0e0; background-color: #f7f7f7;"><strong>Account Number</strong></td>
+                                <td style="padding: 8px 12px; border-bottom: 1px solid #e0e0e0;">{{hotelAccountNumber}}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px 12px; border-bottom: 1px solid #e0e0e0; background-color: #f7f7f7;"><strong>IFSC Code</strong></td>
+                                <td style="padding: 8px 12px; border-bottom: 1px solid #e0e0e0;">{{hotelIfscCode}}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px 12px; border-bottom: 1px solid #e0e0e0; background-color: #f7f7f7;"><strong>Swift Code</strong></td>
+                                <td style="padding: 8px 12px; border-bottom: 1px solid #e0e0e0;">{{hotelSwiftCode}}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px 12px; background-color: #f7f7f7;"><strong>Bank Name</strong></td>
+                                <td style="padding: 8px 12px;">{{hotelBankName}}</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="padding: 20px 30px;">
+                        <p><strong>Regards,</strong></p>
+                            <p>
+                                <strong>Accounts Department</strong><br>
+                                <strong>{{companyName}} Pvt. Ltd.</strong>
+                            </p>
+                            <div>
+                                ☎️ +91 9999102525, 8585990440, 9999880803
+                            </div>
+                            <div>
+                                ✉️ payments@wchotels.com | accounts@wchotels.com
+                            </div>
+                            <div>
+                                🌐 <strong>www.wchotels.com</strong>
+                            </div>
+                            <br
+                            <div>
+                                <strong>Address:</strong>
+                                Plot No 18, D Block, Qutub Vihar, Phase 1, Sector 19 Dwarka, New Delhi -110071, India
+                            </div>
+                            <div>
+                                © 2015 - 2025 World Choice Hotels Pvt. Ltd. All rights reserved.
+                            </div>
+                            </div>
+                    </td>
+                </tr>
+
+            </table>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

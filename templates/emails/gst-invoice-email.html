@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GST Invoice</title>
+    <style>
+      /* General Body Style */
+      .invoice-body {
+        background-color: #f3f4f6;
+        color: #1f2937;
+        font-family: 'Inter', sans-serif;
+        padding: 1rem;
+      }
+
+      /* Main Invoice Container */
+      .invoice-container {
+        max-width: 56rem;
+        margin: 2rem auto;
+        padding: 1.5rem;
+        background-color: #f9fafb;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        border-radius: 0.5rem;
+        border-top: 4px solid #1e3a8a;
+      }
+
+      /* Invoice Title */
+      .invoice-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #1e3a8a;
+        text-decoration: underline;
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+
+      /* Top Header Section (table for email compatibility) */
+      .header-wrapper {
+        border: 1px solid #d1d5db;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        margin-bottom: 1.5rem;
+        background-color: #ffffff;
+      }
+
+      .header-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .header-cell {
+        padding: 1rem;
+        vertical-align: top;
+      }
+
+      .header-cell-divider {
+        border-right: 1px solid #d1d5db;
+      }
+
+      .logo-box {
+        text-align: center;
+      }
+
+      .company-logo {
+        height: 7rem;
+        object-fit: contain;
+        margin: 0 auto;
+      }
+
+      .address-text {
+        font-size: 0.875rem;
+        color: #374151;
+        line-height: 1.625;
+      }
+
+      .font-semibold {
+        font-weight: 600;
+      }
+
+      /* Guest and Hotel Details Grid */
+      .details-grid {
+        gap: 1rem;
+        border: 1px solid #d1d5db;
+        border-radius: 0.5rem;
+        margin-top: 1.5rem;
+        background-color: #f9fafb;
+        padding: 1rem;
+      }
+
+      .section-heading {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #374151;
+      }
+
+      .hotel-info-wrapper {
+        border: 1px solid #d1d5db;
+        border-radius: 0.5rem;
+        background-color: #ffffff;
+      }
+
+      .hotel-info-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .hotel-info-cell {
+        padding: 0.75rem;
+        font-size: 0.875rem;
+        color: #4b5563;
+        vertical-align: top;
+        border-right: 1px solid #d1d5db;
+        width: 60%;
+      }
+
+      .hotel-logo-cell {
+        padding: 0.75rem;
+        vertical-align: middle;
+        text-align: center;
+        width: 40%;
+        height: 10rem;
+      }
+
+      .info-box {
+        border-right: 1px solid #d1d5db;
+        border-radius: 0.25rem;
+        padding: 0.75rem;
+        font-size: 0.875rem;
+        color: #4b5563;
+      }
+
+      .info-box:last-child {
+        margin-bottom: 0;
+      }
+
+      .hotel-logo {
+        height: 100%;
+        width: 100%;
+        max-height: 9rem;
+        object-fit: contain;
+      }
+
+      .section-heading {
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 1.5rem 0 0.5rem;
+        color: #374151;
+      }
+
+      /* Booking Summary */
+      .summary-title-container {
+        text-align: center;
+        margin-top: 1.5rem;
+      }
+
+      .summary-title {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: #1e40af;
+      }
+
+      /* Tables */
+      .table-container {
+        overflow-x: auto;
+        margin-top: 1rem;
+      }
+
+      table {
+        width: 100%;
+        font-size: 0.875rem;
+        text-align: left;
+        border-collapse: collapse;
+      }
+
+      .summary-table {
+        border: 1px solid #d1d5db;
+      }
+
+      .summary-table th,
+      .summary-table td {
+        padding: 0.5rem;
+        border: 1px solid #d1d5db;
+      }
+
+      .summary-table thead {
+        background-color: #f9fafb;
+        color: #4b5563;
+      }
+
+      .summary-table tbody tr:nth-child(even) {
+        background-color: #f9fafb;
+      }
+
+      .summary-table tbody tr:nth-child(odd) {
+        background-color: #ffffff;
+      }
+
+      .billing-table {
+        border: 1px solid black;
+        background-color: white;
+      }
+
+      .billing-table th,
+      .billing-table td {
+        padding: 0.5rem 0.75rem;
+        border-right: 1px solid black;
+      }
+
+      .billing-table th:last-child,
+      .billing-table td:last-child {
+        border-right: 0;
+      }
+
+      .billing-table tbody tr {
+        border-top: 1px solid black;
+      }
+
+      .billing-table thead {
+        font-weight: 600;
+        color: black;
+        border-bottom: 1px solid black;
+        background-color: #f9fafb;
+      }
+
+      .billing-table .text-right {
+        text-align: right;
+      }
+
+      .billing-table .text-center {
+        text-align: center;
+      }
+
+      .billing-table .total-row {
+        font-weight: 600;
+        background-color: #f9fafb;
+      }
+
+      .billing-table .grand-total {
+        font-weight: 700;
+        color: #15803d;
+      }
+
+      /* Final Details Section */
+      .final-details-box {
+        margin-top: 2rem;
+        font-size: 0.875rem;
+        background-color: #ffffff;
+        border: 1px solid #d1d5db;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      }
+
+      .final-details-box .section {
+        margin-bottom: 1rem;
+      }
+
+      .final-details-box .section-title {
+        font-weight: 600;
+        color: #374151;
+        margin-bottom: 0.25rem;
+      }
+
+      .final-details-box .section-content {
+        color: #4b5563;
+        line-height: 1.625;
+      }
+
+      .final-details-box .section-content p {
+        margin: 0.25rem 0;
+      }
+
+      .signature-section {
+        margin-top: 1.5rem;
+      }
+
+      .signature-section .section-title {
+        margin-bottom: 0.5rem;
+      }
+
+      .signature-container {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .signature-image {
+        width: 120px;
+        border: 1px solid #d1d5db;
+        border-radius: 0.125rem;
+      }
+
+      .signature-container p {
+        color: #6b7280;
+        margin-top: 0.5rem;
+      }
+
+      /* Footer Note */
+      .footer-note {
+        text-align: center;
+        font-size: 0.75rem;
+        color: #6b7280;
+        margin-top: 1.5rem;
+        font-style: italic;
+      }
+
+      .summary-billing-details {
+        page-break-before: always;
+        break-before: page;
+      }
+      
+      .guest-info-wrapper {
+        border: 1px solid #d1d5db;
+        border-radius: 0.25rem;
+        margin-bottom: 1rem;
+        background-color: #ffffff;
+      }
+      
+      .guest-info-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      
+      .guest-info-cell {
+        padding: 0.75rem;
+        font-size: 0.875rem;
+        color: #4b5563;
+        vertical-align: top;
+        border-right: 1px solid #d1d5db;
+      }
+      
+      .guest-info-cell:last-child {
+        border-right: 0;
+      }
+
+      .width-30{
+        width: 30%;
+      }
+      .width-40{
+        width: 40%;
+      }
+      .width-60{
+        width: 60%;
+      }
+      .width-33{
+        width: 33%;
+      }
+      .width-34{
+        width: 34%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="invoice-body">
+      <div class="invoice-container">
+        <h1 class="invoice-title">Tax Invoice</h1>
+
+        <!-- Header Section -->
+        <div class="header-wrapper">
+          <table class="header-table" role="presentation" cellpadding="0" cellspacing="0">
+            <tr>
+              <td class="header-cell header-cell-divider logo-box width-30">
+                <img src="{{companyLogoUrl}}" alt="Company Logo" class="company-logo" />
+              </td>
+              <td class="header-cell header-cell-divider company-info-box width-40">
+                <p class="address-text">
+                  <span class="font-semibold">{{companyName}}</span><br />
+                  {{companyAddress}}<br />
+                  {{companyPhones}}<br />
+                  {{companyEmails}}
+                </p>
+              </td>
+              <td class="header-cell gst-details-box width-30">
+                <p class="address-text">
+                  <span class="font-semibold">GSTIN:</span> {{hotelGstNumber}}<br />
+                  <span class="font-semibold">PAN No.:</span> {{companyPanNo}}<br />
+                  <span class="font-semibold">HSN/SAC Code:</span> {{companyHsnSac}}<br />
+                  <span class="font-semibold">Company Reg. No.:</span> {{companyRegNo}}<br />
+                  <span class="font-semibold">TAN No:</span> {{companyTanNo}}
+                </p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="hotel-info-wrapper">
+          <table class="hotel-info-table" role="presentation" cellpadding="0" cellspacing="0">
+            <tr>
+              <td class="hotel-info-cell width-60">
+                <span class="font-semibold">Hotel Name:</span> {{hotelName}}<br />
+                <span class="font-semibold">Hotel Address:</span> {{hotelAddress}}<br />
+                <span class="font-semibold">Phone No:</span> {{hotelMobiles}}<br />
+                <span class="font-semibold">Email Id:</span> {{hotelEmails}}
+              </td>
+              <td class="hotel-logo-cell width-40">
+                <img src="{{hotelLogoUrl}}" alt="Hotel Logo" class="hotel-logo" />
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="details-grid">
+          <h2 class="section-heading">To ,</h2>
+          <div class="guest-info-wrapper">
+            <table class="guest-info-table" role="presentation" cellpadding="0" cellspacing="0">
+              <tr>
+                <td class="guest-info-cell width-33">
+                  <span class="font-semibold">Name:</span> {{customerName}}<br />
+                  <span class="font-semibold">Mobile:</span> {{customerMobiles}}<br />
+                  <span class="font-semibold">Email:</span> {{customerEmails}}
+                </td>
+                <td class="guest-info-cell width-33">
+                  <span class="font-semibold">GST Number:</span> {{customerGstNumber}}<br />
+                  <span class="font-semibold">GST Holder Name:</span> {{customerGstName}}<br />
+                  <span class="font-semibold">GST Holder Address:</span> {{customerGstAddress}}
+                </td>
+                <td class="guest-info-cell width-34">
+                  <span class="font-semibold">Invoice No:</span> {{invoiceNumber}}<br />
+                  <span class="font-semibold">Date:</span> {{invoiceDate}}<br />
+                  <span class="font-semibold">Reference No.:</span> {{pnr}}
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <!-- Booking Summary -->
+        <h2 class="summary-title">Booking Summary</h2>
+        <div class="table-container">
+          <table class="summary-table">
+            <thead>
+              <tr>
+                <th>Room Type</th>
+                <th>Meal Plan</th>
+                <th>Rooms</th>
+                <th>Adults</th>
+                <th>Child</th>
+                <th>Check In</th>
+                <th>Check Out</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{bookingSummaryRows}}
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Billing Details -->
+        <h3 class="section-heading summary-billing-details">Billing Details</h3>
+        <div class="table-container">
+          <table class="billing-table">
+            <thead>
+              <tr>
+                <th class="text-right">Date</th>
+                <th class="text-right">Room Type</th>
+                <th class="text-right">Base Price</th>
+                <th class="text-right">IGST</th>
+                <th class="text-center">Nights</th>
+                <th class="text-right">Total IGST</th>
+                <th class="text-right">Total Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{billingRows}}
+              <tr class="total-row">
+                <td colspan="4" class="text-right">Total</td>
+                <td class="text-right">{{totalNights}}</td>
+                <td class="text-right">{{totalIgst}}</td>
+                <td class="text-right grand-total">{{grandTotal}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Final Summary & Bank Details -->
+        <div class="final-details-box">
+          <div class="section">
+            <p class="section-title">Amount in Words:</p>
+            <p class="section-content">{{amountInWords}}</p>
+          </div>
+
+          <div class="section">
+            <p class="section-title">Bank Details:</p>
+            <div class="section-content">
+              <p><strong>Bank:</strong> {{bankName}}</p>
+              <p><strong>Branch:</strong> {{bankBranch}}</p>
+              <p><strong>Beneficiary Name:</strong> {{beneficiaryName}}</p>
+              <p><strong>Account Number:</strong> {{accountNumber}}</p>
+              <p><strong>IFSC Code:</strong> {{ifscCode}}</p>
+              <p><strong>SWIFT Code:</strong> {{swiftCode}}</p>
+            </div>
+          </div>
+
+          <div class="signature-section">
+            <p class="section-title">For {{companyName}}</p>
+            <div class="signature-container">
+              <img src="{{signatureUrl}}" alt="Signature" class="signature-image" />
+              <p>Authorized Signatory</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="footer-note">
+          This is an electronically generated invoice. No physical signature is required.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

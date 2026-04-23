@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      body { font-family: Arial, Helvetica, sans-serif; color: #222; }
+      .container { margin: 0 auto; }
+      h1 { font-size: 18px; margin: 0 0 10px; }
+      h2 { font-size: 16px; margin: 16px 0 8px; }
+      p { margin: 6px 0; }
+      table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+      th, td { border: 1px solid #ccc; padding: 6px; font-size: 12px; }
+      th { background: #f3f3f3; text-align: left; }
+      .note { font-size: 12px; color: #555; }
+      .muted { color: #666; }
+      .divider { height: 1px; background: #e5e5e5; margin: 16px 0; }
+      ul { margin: 8px 0 8px 18px; }
+      li { margin: 4px 0; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <p>Dear Reservations Team,</p>
+      <p><strong>Namaste & Greetings from World Choice Hotels !!</strong></p>
+      <p>
+        Please find below the <strong>Daily Booking Report</strong> for <strong>{{Date}}</strong>, Report Generated Time: <strong>{{Time}}</strong>.
+      </p>
+
+      <h2>• Bookings Generated Today ({{Date}})</h2>
+      {{BookingTable}}
+
+      <div class="divider"></div>
+      <h2>Notes for Team</h2>
+      <ol class="note">
+        <li><strong>New Bookings</strong> – Cross‑check all reservations in WorldCRS and verify payable amounts.</li>
+        <li><strong>Pending Payments</strong> – Follow up with OTA Partners or Guests for confirmation before check‑in.</li>
+        <li><strong>Hotel Coordination</strong> – Notify hotels of bookings with immediate payment status.</li>
+        <li><strong>Financial Monitoring</strong> – Payable amounts shown are as per agreed terms with hotels. Final settlement will be adjusted by the Accounts Department.</li>
+      </ol>
+
+      <div class="divider"></div>
+      <p><strong>With Regards,</strong></p>
+      <p><strong>
+        World Choice Hotels Pvt. Ltd.
+        </strong>
+      </p>  
+      <p><strong>
+        Centralized Reservations Team
+        </strong>
+      </p>
+      <br>
+      <p>
+        ☎️ +91 9954363505, 7399888822, 9999880833, 9998808803</p>
+      <p>
+        ✉️ <strong>reservations@wchotels.com</strong> | <strong>partner@wchotels.com</strong></p>
+      <p>
+        🌐 <strong>www.wchotels.com</strong> | <strong>www.worldchoicehotels.com</strong>
+      </p>
+      <br>
+      <p>
+        <strong>Delhi Head Office:</strong><br>
+        Samta Enclave, Near Mother Dairy, Qutub Vihar, Phase 1, Sector 19 Dwarka, New Delhi-110071, India
+      </p>
+      <p>
+        <strong>North East Office:</strong><br>
+        Purna Saikia Complex, NH–37, Sonapur, Guwahati, Kamrup (Metro), Assam - 782402, India
+      </p>
+    </div>
+  </body>
+  </html>
+
+

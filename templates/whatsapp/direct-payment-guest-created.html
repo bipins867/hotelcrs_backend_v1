@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* PDF-Optimized Styles */
+        * {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+            color-adjust: exact !important;
+        }
+
+        @page {
+            size: A4;
+            margin: 10mm;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.4;
+            background-color: #ffffff;
+            font-size: 12px;
+        }
+
+        .pdf-page {
+            width: 100%;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 12mm;
+            background-color: white;
+            box-sizing: border-box;
+        }
+
+        /* Header Section */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 12px;
+            margin-bottom: 15px;
+            page-break-inside: avoid;
+        }
+
+        .header-logo {
+            flex: 0 0 auto;
+            margin-right: 15px;
+        }
+
+        .header-logo img {
+            max-width: 120px;
+            max-height: 50px;
+            height: auto;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .company-details {
+            text-align: left;
+            font-size: 0.75em;
+            color: #555;
+            line-height: 1.3;
+        }
+
+        .company-name {
+            font-weight: bold;
+            font-size: 1em;
+            color: #2c3e50;
+            margin-bottom: 4px;
+        }
+
+        /* Title Section */
+        .title-section {
+            text-align: center;
+            margin-bottom: 12px;
+            page-break-inside: avoid;
+        }
+
+        .title-section h1 {
+            font-size: 1.4em;
+            color: #f39c12;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        /* Content Styles */
+        .intro {
+            margin-bottom: 12px;
+            page-break-inside: avoid;
+        }
+
+        .intro p {
+            margin: 4px 0;
+            font-size: 0.9em;
+        }
+
+        .highlight {
+            color: #f39c12;
+            font-weight: bold;
+        }
+
+        /* Reservation Details Box */
+        .reservation-box {
+            background-color: #f9f9f9;
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 12px;
+            border: 1px solid #e0e0e0;
+            page-break-inside: avoid;
+        }
+
+        .detail-row {
+            display: flex;
+            padding: 5px 0;
+            border-bottom: 1px solid #eee;
+            page-break-inside: avoid;
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .label {
+            flex: 0 0 160px;
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 0.85em;
+        }
+
+        .value {
+            flex: 1;
+            color: #333;
+            font-size: 0.85em;
+        }
+
+        .value a {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        /* Payment Details Section */
+        .payment-section {
+            background-color: #fff9e6;
+            border-left: 4px solid #f39c12;
+            padding: 10px 12px;
+            margin-bottom: 12px;
+            page-break-inside: avoid;
+        }
+
+        .payment-section h3 {
+            margin-top: 0;
+            margin-bottom: 8px;
+            color: #f39c12;
+            font-size: 0.95em;
+            font-weight: bold;
+        }
+
+        .payment-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
+            border-bottom: 1px solid #f0e6cc;
+        }
+
+        .payment-row:last-child {
+            border-bottom: none;
+        }
+
+        .payment-label {
+            font-size: 0.85em;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .payment-value {
+            font-size: 0.85em;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .payment-note {
+            font-size: 0.8em;
+            color: #666;
+            font-style: italic;
+            margin-top: 6px;
+            padding-top: 6px;
+            border-top: 1px solid #f0e6cc;
+        }
+
+        /* Important Information Section */
+        .important-section {
+            background-color: #e8f5e9;
+            border-left: 4px solid #27ae60;
+            padding: 10px 12px;
+            margin-bottom: 12px;
+            page-break-inside: avoid;
+        }
+
+        .important-section h3 {
+            margin-top: 0;
+            margin-bottom: 6px;
+            color: #27ae60;
+            font-size: 0.95em;
+            font-weight: bold;
+        }
+
+        ul {
+            padding-left: 18px;
+            margin: 0;
+        }
+
+        li {
+            margin-bottom: 4px;
+            line-height: 1.3;
+            font-size: 0.85em;
+        }
+
+        /* Support Section */
+        .support-box {
+            background-color: #f0f7ff;
+            border: 1px solid #d0e3ff;
+            border-radius: 6px;
+            padding: 10px 12px;
+            margin-bottom: 12px;
+            page-break-inside: avoid;
+        }
+
+        .support-header {
+            font-weight: bold;
+            font-size: 0.95em;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        .support-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .support-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 0;
+            border-bottom: 1px solid #d0e3ff;
+        }
+
+        .support-row:last-child {
+            border-bottom: none;
+        }
+
+        .support-label {
+            font-size: 0.85em;
+            font-weight: bold;
+            color: #2c3e50;
+            flex-shrink: 0;
+            margin-right: 5px;
+        }
+
+        .support-value {
+            font-size: 0.85em;
+            color: #333;
+            text-align: right;
+            flex-grow: 1;
+        }
+
+        .support-value a {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        /* Closing Section */
+        .closing-section {
+            text-align: center;
+            margin-top: 12px;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+            page-break-inside: avoid;
+        }
+
+        .closing-thanks {
+            font-size: 0.95em;
+            color: #2c3e50;
+            margin-bottom: 4px;
+            font-weight: 500;
+        }
+
+        .closing-wish {
+            font-size: 0.85em;
+            color: #27ae60;
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.7em;
+            color: #888;
+            border-top: 1px solid #eee;
+            padding-top: 6px;
+            page-break-inside: avoid;
+        }
+
+        /* Print/PDF Optimizations */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .pdf-page {
+                margin: 0;
+                padding: 15mm;
+                box-shadow: none;
+                border: none;
+            }
+        }
+
+        /* Ensure images don't break layout */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="pdf-page">
+        <!-- Header with Logo and Company Details -->
+        <header>
+            <div class="header-logo">
+                <img src="{{companyLogo}}" alt="Company Logo" onerror="this.style.display='none'">
+            </div>
+            <div class="company-details">
+                <div class="company-name">{{companyName}}</div>
+                <div>{{companyAddress}}</div>
+                <div>{{companyEmail}}</div>
+                <div>{{companyPhone}}</div>
+            </div>
+        </header>
+
+        <!-- Title Section -->
+        <div class="title-section">
+            <h1>💳 YOUR PAY-AT-HOTEL BOOKING IS CONFIRMED!</h1>
+        </div>
+
+        <!-- Greeting -->
+        <div class="intro">
+            <p>Dear {{guestName}},</p>
+            <p>Thank you for booking with <span class="highlight">World Choice Hotels</span>! We are pleased to confirm your reservation. Please find your booking details below. <strong>Please pay the outstanding amount at the time of check in</strong>:</p>
+        </div>
+
+        <!-- Reservation Details -->
+        <div class="reservation-box">
+            <div class="detail-row">
+                <div class="label">🏨 Hotel Name, City, State:</div>
+                <div class="value">{{hotelName}}, {{city}}, {{state}}</div>
+            </div>
+            <div class="detail-row">
+                <div class="label">🗓️ Booking ID:</div>
+                <div class="value"><strong>{{bookingId}}</strong></div>
+            </div>
+            <div class="detail-row">
+                <div class="label">➡️ Check-in:</div>
+                <div class="value">{{checkinDate}}</div>
+            </div>
+            <div class="detail-row">
+                <div class="label">⬅️ Check-out:</div>
+                <div class="value">{{checkoutDate}}</div>
+            </div>
+            <div class="detail-row">
+                <div class="label">🛏️ Room Type:</div>
+                <div class="value">{{roomType}}</div>
+            </div>
+            <div class="detail-row">
+                <div class="label">🚪 Number of Rooms:</div>
+                <div class="value">{{numberOfRooms}}</div>
+            </div>
+            <div class="detail-row">
+                <div class="label">🌙 Number of Nights:</div>
+                <div class="value">{{numberOfNights}}</div>
+            </div>
+            <div class="detail-row">
+                <div class="label">👥 Guests:</div>
+                <div class="value">{{totalAdults}} Adults, {{totalChildren}} Children</div>
+            </div>
+            <div class="detail-row">
+                <div class="label">📍 Hotel Location:</div>
+                <div class="value">{{hotelLocation}}</div>
+            </div>
+        </div>
+
+        <!-- Payment Details Section -->
+        <div class="payment-section">
+            <h3>$ Payment Details:</h3>
+            <div class="payment-row">
+                <span class="payment-label">Original Amount:</span>
+                <span class="payment-value">₹{{netAmount}}</span>
+            </div>
+            <div class="payment-row">
+                <span class="payment-label">Advance Paid (if any):</span>
+                <span class="payment-value">₹{{advanceAmount}}</span>
+            </div>
+            <div class="payment-row">
+                <span class="payment-label">Balance to be Paid at Hotel:</span>
+                <span class="payment-value">₹{{payableAmountPayAtHotel}}</span>
+            </div>
+            <div class="payment-note">
+                Any additional charges (meals, laundry, etc.) will be collected directly by the hotel.
+            </div>
+        </div>
+
+        <!-- Important Information Section -->
+        <div class="important-section">
+            <h3>✔ Important Information:</h3>
+            <ul>
+                {{checkinTimeInfo}}
+                {{checkoutTimeInfo}}
+                <li>Carry a valid ID at check-in.</li>
+                <li>Ensure you have the necessary payment method for hotel charges.</li>
+            </ul>
+        </div>
+
+        <!-- Need Assistance Section -->
+        <div class="support-box">
+            <div class="support-header">❓ Need Assistance?</div>
+            <div class="support-content">
+                <div class="support-row">
+                    <span class="support-label">📞 Call Us :</span>
+                    <span class="support-value">{{companyPhone}}</span>
+                </div>
+                <div class="support-row">
+                    <span class="support-label">📧 Email Support :</span>
+                    <span class="support-value">{{companyEmail}}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Thank You Section -->
+        <div class="closing-section">
+            <div class="closing-thanks">We look forward to welcoming you and wish you a comfortable stay with <strong>World Choice Hotels</strong>! 🌿</div>
+        </div>
+    </div>
+</body>
+
+</html>
+

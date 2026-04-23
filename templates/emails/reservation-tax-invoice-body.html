@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Invoice Email</title>
+</head>
+
+<body>
+    <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #000;">
+        <p>Dear {{customerName}},</p>
+
+        <p>Greetings from <strong>{{companyPrefix}} !!</strong></p>
+
+        <p>It was a pleasure hosting you at <strong>{{hotelName}}</strong>, and we truly appreciate you choosing us for
+            your stay.<br>
+            We hope you had a comfortable and pleasant experience with us.</p>
+
+        <p>Please find attached the <strong>Tax Invoice</strong> for your reference, as per the details mentioned below:
+        </p>
+
+        <p>
+            <strong>Hotel Name:</strong> {{hotelName}}<br>
+            <strong>Hotel Address:</strong> {{hotelAddress}}<br>
+            <strong>Check-in Date:</strong> {{checkInDate}}<br>
+            <strong>Check-out Date:</strong> {{checkOutDate}}<br>
+            <strong>Number of Rooms:</strong> {{totalRooms}}<br>
+            <strong>Number of Guests:</strong> {{numberOfGuests}}<br>
+            <strong>Number of Nights:</strong> {{totalNight}}
+        </p>
+
+        <p>Should you require any clarification or further assistance regarding the invoice, please feel free to contact
+            us. We will be happy to assist you.</p>
+
+        <p>Thank you once again for staying with us. We look forward to welcoming you again in the future.</p>
+
+        <p>
+            Warm Regards,<br>
+            <strong>Team – Accounts & Invoices</strong><br>
+            {{companyName}}
+        </p>
+
+        <p>
+            📱 {{companyPhone}}<br>
+            ✉️ <a href="mailto:accounts@wchotels.com">accounts@wchotels.com</a><br>
+            🌐 <a href="http://www.wchotels.com">www.wchotels.com</a> | <a
+                href="http://www.worldchoicehotels.in">www.worldchoicehotels.in</a>
+        </p>
+    </div>
+</body>
+
+</html>

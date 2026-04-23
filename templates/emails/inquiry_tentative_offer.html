@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hotel Reservation Inquiry</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #222;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    .muted {
+      color: #666;
+    }
+
+    .title {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 12px 0;
+      text-transform: uppercase;
+    }
+
+    .section {
+      margin-top: 20px;
+      border-top: 1px solid;
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+
+    .table th,
+    .table td {
+      border: 1px solid #e5e5e5;
+      padding: 8px;
+      text-align: left;
+    }
+
+    .table th {
+      background: #f7f7f7;
+    }
+
+    .small {
+      font-size: 12px;
+    }
+
+    .note {
+      background: #fff8e1;
+      border: 1px solid #ffe082;
+      padding: 10px;
+      font-size: 12px;
+    }
+
+    .footer {
+      font-size: 12px;
+      color: #555;
+      margin-top: 24px;
+    }
+
+    a {
+      color: #0b63ce;
+      text-decoration: none;
+    }
+
+    .qr-code {
+      width: 100px;
+      height: 100px;
+    }
+  </style>
+  <!-- Inline placeholders follow {{Key}} notation, processed by TemplateHelper -->
+</head>
+
+<body>
+  <div class="container">
+    <p>Dear {{Guest_Name}},</p>
+    <p> Warm greetings from <strong>World Choice Hotels Pvt. Ltd.</strong></p>
+    <p>Thank you for sharing your travel details with us. As discussed, please find below the <strong>
+        tentative information </strong> related to your stay at <strong>{{Hotel_Name}}, {{City}}, {{State}},
+        {{Country}}.
+      </strong>
+    </p>
+    <p>⚠ <strong>Important Note:</strong></p>
+    <p>
+      This email is shared <strong>strictly for information and review purposes only.</strong>
+      It <strong>does NOT confirm your booking.</strong> Final confirmation will be issued <strong>only via official
+        written email</strong>
+      once availability is reconfirmed and payment is successfully verified.
+    </p>
+
+    <div class="section">
+      <div class="title">Hotel Overview</div>
+      <p class="small"><strong>Hotel Name:</strong> {{Hotel_Name}}</p>
+      <p class="small"><strong>City / State / Country:</strong> {{City}}, {{State}}, {{Country}}</p>
+      <p class="small"><strong>Google Maps:</strong> <a href="{{Google_Maps}}">View Location</a></p>
+      <p class="small"><strong>Hotel Contact Number:</strong> {{Restaurant_Number}}</p>
+      <p class="small"><strong>Hotel Email:</strong> {{Restaurant_Email}}</p>
+    </div>
+    <div class="section">
+      <div class="title">Stay Details</div>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>Inquiry ID</th>
+            <td>{{Inquiry_Code}}</td>
+          </tr>
+          <tr>
+            <th>Check In Date</th>
+            <td>{{CheckIn_Date}}</td>
+          </tr>
+          <tr>
+            <th>Check Out Date</th>
+            <td>{{CheckOut_Date}}</td>
+          </tr>
+          <tr>
+            <th>No. of Nights</th>
+            <td>{{No_Of_Nights}}</td>
+          </tr>
+          <tr>
+            <th>No. of Guests</th>
+            <td>Adult: {{Adults}}, Child: {{Children}}</td>
+          </tr>
+          <tr>
+            <th>No. of Rooms</th>
+            <td>{{No_Of_Rooms}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <div class="title">Room Types & Rate Plans</div>
+      <!-- Simple grid reflecting min rate per plan pulled from DB -->
+      <p>
+        Please note that the above rates are tentative and should not be considered final. The rates are
+        subject to change at the time of final reservation confirmation.
+      </p>
+      <table class="table small">
+        <thead>
+          <tr>
+            <th>Room Type</th>
+            <th>Rate Plan</th>
+            <th>SGL</th>
+            <th>DBL</th>
+            <th>Extra Adult</th>
+            <th>Extra Child</th>
+            <th>Inclusions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{Room_Types_Rates_HTML}}
+        </tbody>
+      </table>
+      <p class="small"><strong>Room Categories:</strong> {{Room_Categories}} (Subject to availability)</p>
+      <p class="small"><strong>Estimated Total (Tentative):</strong> ₹{{Estimated_Total}}</p>
+    </div>
+
+    <div class="section">
+      <div class="title">Check-in / Check-out Policy</div>
+      <p class="small"><strong>Standard Check-In Time:</strong> {{CheckIn_Time}}</p>
+      <p class="small"><strong>Standard Check-Out Time:</strong> {{CheckOut_Time}}</p>
+      <br />
+      <p class="small"><strong>Last Check-In Allowed:</strong> {{Last_CheckIn_Time}}</p>
+      <p class="small"><strong>Last Check-Out Allowed:</strong> {{Last_CheckOut_Allowed}}</p>
+      <br />
+      <p class="small"><strong>Minimum Check-In Age:</strong> {{CheckIn_Age}}</p>
+    </div>
+
+    <div class="section">
+      <div class="title">Early / Late Charge</div>
+      <p class="small"><strong>Early Check-In:</strong> {{Early_CheckIn_Option}}</p>
+      <p class="small"><strong>Early Check-In Charge:</strong> ₹{{Early_CheckIn_Charge}}</p>
+      <br />
+      <p class="small"><strong>Late Check-Out:</strong> {{Late_CheckOut_Option}}</p>
+      <p class="small"><strong>Late Check-Out Charge:</strong> ₹{{Late_CheckOut_Charge}}</p>
+
+    </div>
+
+    <div class="section">
+      <div class="title">Child & Extra Person Policy</div>
+      <p class="small"><strong>Child (Free up to):</strong> {{Child_Age_Free}} Years</p>
+      <p class="small"><strong>Child Chargable Above:</strong> {{Child_Age_Chargeable}}</p>
+      <p class="small"><strong>Child Charge:</strong> ₹{{Child_Charge}}</p>
+      <p class="small"><strong>Extra Adult / Extra Bed Charge:</strong> ₹{{Extra_Person_Charge}}</p>
+    </div>
+
+    <div class="section">
+      <div class="title">Check-In Document Required</div>
+      <p class="small">Accepted ID Proofs (Any One):</p>
+      <ul>
+        {{Documents_Accepted}}
+      </ul>
+      <p class="small">⚠ PAN Card is <strong>NOT accepted</strong> as valid ID.</p>
+    </div>
+
+    <div class="section">
+      <div class="title">Hotel Policies</div>
+      <p class="small"><strong>Visitors Allowed in Room:</strong> {{Visitor_Policy}}</p>
+      <p class="small"><strong>Outside Food:</strong> {{Outside_Food}}</p>
+      <p class="small"><strong>Pets Allowed:</strong> {{Pet_Policy}}</p>
+      <p class="small"><strong>Local Guests:</strong> {{Local_Guest_Policy}}</p>
+      <p class="small"><strong>Unmarried Couples:</strong> {{Unmarried_Couple_Policy}}</p>
+    </div>
+
+    <div class="section">
+      <div class="title">Dining & Facilities</div>
+      <p class="small">Restaurant & Bar Timings</p>
+      <table class="table small">
+        <thead>
+          <tr>
+            <th>Facility / Outlet</th>
+            <th>Open Time</th>
+            <th>Close Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{Restaurant_Rows_HTML}}
+        </tbody>
+      </table>
+
+      <p class="small">Meal Pricing (Per Person)</p>
+      <table class="table small" style="margin-top:10px;">
+        <thead>
+          <tr>
+            <th>Meal Type</th>
+            <th>Veg</th>
+            <th>Non-Veg</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Breakfast</td>
+            <td>₹{{Breakfast_Cost}}</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Lunch</td>
+            <td>₹{{Lunch_Veg}}</td>
+            <td>₹{{Lunch_NonVeg}}</td>
+          </tr>
+          <tr>
+            <td>Dinner</td>
+            <td>₹{{Dinner_Veg}}</td>
+            <td>₹{{Dinner_NonVeg}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <div class="title">Additional Information</div>
+      <table class="table small">
+        <tbody>
+          <tr>
+            <th>Menu Type</th>
+            <td>{{Menu_Type}}</td>
+          </tr>
+          <tr>
+            <th>Breakfast Type</th>
+            <td>{{Breakfast_Type}}</td>
+          </tr>
+          <tr>
+            <th>Breakfast Served In</th>
+            <td>{{Breakfast_Served_In}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="small">📎 Restaurant Menu / Bar Menu / Itinerary Menu are shared as attachments (if applicable).</p>
+    </div>
+
+    <div class="section">
+      <div class="title">TRAVEL, PICKUP & TRANSPORT ASSISTANCE ( Local Area)</div>
+      <p class="small"><strong>Ola / Uber / Rapido:</strong> {{Cab_Availability}}</p>
+      <p class="small"><strong>Transport / Cab Details:</strong></p>
+      <table class="table small">
+        <thead>
+          <tr>
+            <th>Facility/Outlet</th>
+            <th>Distance</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{Transport_Table_Rows_HTML}}
+        </tbody>
+      </table>
+
+      <p class="small"><strong>Pickup Charges (One Way):</strong></p>
+      <table class="table small">
+        <thead>
+          <tr>
+            <th>Pickup Point Name</th>
+            <th>Car Type</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{Pickup_Table_Rows_HTML}}
+        </tbody>
+      </table>
+
+      <p class="small"><strong>Hourly Charges:</strong></p>
+      <table class="table small">
+        <thead>
+          <tr>
+            <th>Hours Type</th>
+            <th>Car Type</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{Hourly_Table_Rows_HTML}}
+        </tbody>
+      </table>
+
+      <p class="small"><strong>Outstation Charges:</strong></p>
+      <table class="table small">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Car Type</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{Outstation_Table_Rows_HTML}}
+        </tbody>
+      </table>
+
+      <p class="small"><strong>Extra KM Charges:</strong></p>
+      <table class="table small">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Car Type</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{Extra_KM_Table_Rows_HTML}}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <div class="title">Additional Information (Driver)</div>
+      <table class="table small">
+        <tbody>
+          <tr>
+            <th>Driver Allowance (Per Day)</th>
+            <td>₹{{Driver_Allowance}}</td>
+          </tr>
+          <tr>
+            <th>Toll / Parking / State Tax</th>
+            <td>{{Toll_Tax_Paid_By}}</td>
+          </tr>
+          <tr>
+            <th>Driver Accommodation Charge</th>
+            <td>₹{{Driver_Accommodation_Charge}}</td>
+          </tr>
+          <tr>
+            <th>Driver Accommodation Paid By</th>
+            <td>{{Driver_Accommodation_Paid_By}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="section">
+      <p class="title">TRANSPORT TERMS</p>
+      <p class="small"><strong>Hill Station Terms:</strong></p>
+      <div class="small"> {{Hill_Terms_HTML}}</div>
+      <br />
+      <p class="small"><strong>Plain Area Terms:</strong></p>
+      <div class="small"> {{Plain_Terms_HTML}}</div>
+      <br />
+      <p class="small"><strong>Extra KM Terms:</strong></p>
+      <div class="small"> {{Extra_KM_Terms_HTML}}</div>
+      <br />
+      <p class="small"><strong>Driver Accommodation Terms:</strong></p>
+      <div class="small"> {{Driver_Accommodation_Terms_HTML}}</div>
+      <br />
+      <p class="small"><strong>Unforeseen Charges:</strong></p>
+      <div class="small"> {{Unforeseen_Charges_HTML}}</div>
+      <br />
+      <p class="small"><strong>Payment Terms:</strong></p>
+      <div class="small"> {{Payment_Terms_HTML}}</div>
+    </div>
+
+    <div class="section">
+      <p class="title">PAYMENT OPTIONS</p>
+      <p class="small"><strong>🔗 Payment Links:</strong></p>
+      <ul>
+        <li>Link 1: {{Payment_Link_1}}</li>
+        <li>Link 2: {{Payment_Link_2}}</li>
+      </ul>
+      <br />
+      <p class="small"><strong>🌍 International Guests:</strong></p>
+      <ul>
+        <li>PayPal Link 1: {{PayPal_Link_1}}</li>
+        <li>PayPal Link 2: {{PayPal_Link_2}}</li>
+      </ul>
+      <br />
+      <p class="small"><strong>📎 UPI / QR Codes attached</strong></p>
+      <div style="display: flex; justify-content: space-between;">
+        {{UPI_QR_Codes_HTML}}
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="title">IMPORTANT DISCLAIMER</div>
+      <div class="small">This email is <strong>not a booking confirmation.</strong>
+      </div>
+      <div class="small">Rooms, rates, and inventory are <strong>subject to availability</strong> at the time of
+        confirmation.</div>
+      <p class="small">Final booking confirmation will be sent <strong>only after payment verification</strong> through
+        official {{hotelName}} communication.</p>
+    </div>
+    <div class="section">
+      <p class="small">For any clarification or assistance, feel free to reply to this email or contact us anytime.</p>
+      <div class="footer">
+        <div>Warm Regards</div>
+        <div><strong>Reservations Team</strong></div>
+        <div>{{companyName}}</div>
+        <br />
+        <div>📞 {{companyPhone}}</div>
+        <div>📧 {{companyEmail}}</div>
+        <div>🌐 {{companyWebsite}}</div>
+        <br />
+        <div>
+          <strong>Delhi Head Office:</strong> Samta Enclave, Near Mother Dairy, Qutub Vihar, Phase 1, Sector 19 Dwarka,
+          New
+          Delhi- 110071, India
+        </div>
+        <br />
+        <div>
+          <strong>North East Office:</strong> Purna Saikia Complex, NH – 37, Sonapur, Guwahati, Kamrup (Metro), Assam -
+          782402, India
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</body>
+
+</html>

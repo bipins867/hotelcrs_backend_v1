@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      .container { margin: 0 auto; }
+      .header { padding: 16px 20px; border-bottom: 3px solid #222; }
+      .title { font-size: 18px; font-weight: 700; margin: 4px 0; }
+      .sub { color: #666; font-size: 12px; }
+      .day-title { margin: 26px 0 10px; font-size: 16px; font-weight: 700; }
+      .note { font-size: 12px; color: #666; margin: 6px 0 18px; }
+      table { width: 100%; border-collapse: collapse; font-size: 12px; }
+      th, td { padding: 8px; border: 1px solid #ccc; vertical-align: top; }
+      th { background: #f5f5f5; text-align: left; }
+      .footer { margin-top: 24px; padding: 16px 20px; border-top: 1px dashed #bbb; font-size: 12px; color: #444; }
+      .small { font-size: 11px; color: #666; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="title">Management - {{companyName}}</div>
+        <p>Dear Reservations Team,</p>
+        <p><strong>Namaste & Greetings from {{companyName}} !!</strong></p>
+        <p>Please find below the Weekly Check-In Report for the period {{startDate}} – {{endDate}}. This report is for internal use by the <strong>{{companyShort}} Central Reservations Team</strong> to track upcoming arrivals and ensure timely guest follow-ups.</p>
+      </div>
+
+      {{daysHTML}}
+
+      <div class="footer">
+        <div class="day-title">Notes for Team</div>
+        <ol class="small">
+          <li><strong>Follow-Up Calls</strong> – Contact guests 1–2 days prior to check-in to confirm arrival & requirements.</li>
+          <li><strong>Pending Payments</strong> – Highlight and confirm payment method with guests before arrival.</li>
+          <li><strong>WhatsApp Welcome</strong> – Send personalized welcome messages where applicable.</li>
+          <li><strong>Data Entry</strong> – Ensure all guest details are updated in WorldCRS.</li>
+          <li><strong>Cross-Check</strong> – Confirm with hotels for special requests, room allocation, or modifications.</li>
+        </ol>
+        <div class="small">With Regards,<br/>{{companyName}}<br/>Centralized Reservations Team<br/>{{companyPhone}} | {{companyEmail}}<br/>
+        {{companyWebsite}}</div>
+      </div>
+    </div>
+  </body>
+  </html>
+
+

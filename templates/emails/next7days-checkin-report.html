@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      body { font-family: Arial, Helvetica, sans-serif; color: #222; }
+      .container { margin: 0 auto; }
+      h1 { font-size: 18px; margin: 0 0 10px; }
+      h2 { font-size: 16px; margin: 18px 0 8px; }
+      table { width: 100%; border-collapse: collapse; }
+      th, td { border: 1px solid #ccc; padding: 6px; font-size: 12px; }
+      th { background: #f3f3f3; text-align: left; }
+      .day { margin: 12px 0; }
+      .day-title { font-weight: bold; margin: 8px 0; }
+      .note { font-size: 12px; color: #666; }
+      .divider { height: 1px; background: #e5e5e5; margin: 16px 0; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <p>Dear Team,</p>
+      <p><strong>Namaste & Greetings from World Choice Hotels !!</strong></p>
+      <p>Please find below the Next 7 Days Check-In Report for <strong>{{HotelName}}, {{City}}, {{State}}</strong> generated on <strong>{{Date}}</strong> at 9:00 AM.</p>
+      <p>You will also receive an updated report at 11:00 PM.</p>
+      <p><strong>Note:</strong> This report contains <strong>confirmed, new, and modified bookings only.</strong></p>
+      
+      <div class="divider"></div>
+        <h2>Date-Wise Check-In List</h2>
+      <div class="divider"></div>
+      {{DaysHTML}}
+
+      <div class="divider"></div>
+      <h3>GST Invoice Instructions</h3>
+      <p>All GST invoices must be issued in the name of World Choice Hotels Pvt. Ltd Please use the correct GSTIN as per your Hotel's State.</p>
+      
+      <table>
+        <thead>
+          <tr>
+            <th>State</th>
+            <th>GSTIN</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Rajasthan</td><td>08AABCW7108D1ZI</td><td>Active</td></tr>
+          <tr><td>Haryana</td><td>06AABCW7108D1ZM</td><td>Active</td></tr>
+          <tr><td>Karnataka</td><td>29AABCW7108D1ZE</td><td>Active</td></tr>
+          <tr><td>Meghalaya</td><td>17AABCW7108D1ZJ</td><td>Active</td></tr>
+          <tr><td>Uttar Pradesh</td><td>09AABCW7108D1ZG</td><td>Active</td></tr>
+          <tr><td>Arunachal Pradesh</td><td>12AABCW7108D1ZT</td><td>Active</td></tr>
+          <tr><td>Delhi</td><td>07AABCW7108D1ZK</td><td>Active</td></tr>
+          <tr><td>Jammu & Kashmir</td><td>01AABCW7108D1ZW</td><td>Inactive</td></tr>
+          <tr><td>West Bengal</td><td>19AABCW7108D1ZF</td><td>Active</td></tr>
+          <tr><td>Assam</td><td>18AABCW7108D1ZH</td><td>Active</td></tr>
+        </tbody>
+      </table>
+      
+      <p><strong>Instructions:</strong></p>
+      <p>1. Select the GSTIN as per your Hotel's State.</p>
+
+      <div class="divider"></div>
+      <h3>WorldCRS Login Instructions</h3>
+      <p><strong>Login URL:</strong> www.worldcrs.com</p>
+      <p><strong>CRS Functionalities:</strong></p>
+      <ul>
+        <li>✅ Download & Upload GST Invoices</li>
+        <li>✅ Check Booking & Payment Details</li>
+        <li>✅ Upload Hotel Photos & Videos</li>
+        <li>✅ View Guest Details & Reservation Summaries</li>
+        <li>✅ Track Real-Time Reservations</li>
+      </ul>
+      
+      <p><strong>Final Notes:</strong></p>
+      <p>• This report is generated automatically from WorldCRS at 9:00 AM and 11:00 PM daily.</p>
+      <p>• Cancelled bookings are excluded from this report.</p>
+      <p>• Teams should prepare in advance for arrivals.</p>
+      <p>• Ensure GST invoices are uploaded daily for completed check-outs.</p>
+
+      <div class="divider"></div>
+      <p><strong>With Regards,</strong></p>
+      <p><strong>World Choice Hotels Pvt. Ltd.</strong></p>
+      <p><strong>Centralized Reservations Team</strong></p>
+      <br>
+      <p>☎️ +91 9954363505, 7399888822, 9999880833, 9999880803</p>
+      <p>✉️ <strong>reservations@wchotels.com</strong> | <strong>wecare@wchotels.com</strong></p>
+      <p>🌐 <strong>www.wchotels.com</strong> | <strong>www.worldchoicehotels.com</strong></p>
+      <br>
+      <p><strong>Delhi Head Office:</strong><br>
+      Samta Enclave, Near Mother Dairy, Qutub Vihar, Phase 1, Sector 19 Dwarka, New Delhi-110071, India</p>
+      <p><strong>North East Office:</strong><br>
+      Purna Saikia Complex, NH-37, Sonapur, Guwahati, Kamrup (Metro), Assam - 782402, India</p>
+    </div>
+  </body>
+</html>

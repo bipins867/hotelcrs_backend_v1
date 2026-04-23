@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      body { font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 1.6; color: #333; }
+      .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+      h1 { font-size: 20px; margin: 0 0 10px; color: #1e3a8a; }
+      h2 { font-size: 18px; margin: 24px 0 12px; color: #1e40af; border-bottom: 2px solid #e5e7eb; padding-bottom: 6px; }
+      h3 { font-size: 16px; margin: 18px 0 8px; color: #374151; }
+      h4 { font-size: 14px; margin: 12px 0 6px; font-weight: 600; color: #4b5563; }
+      p { margin: 8px 0; }
+      table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 12px; }
+      th, td { border: 1px solid #d1d5db; padding: 8px; text-align: left; }
+      th { background: #f3f4f6; font-weight: 600; color: #1f2937; }
+      tr:nth-child(even) { background: #f9fafb; }
+      .section { margin: 20px 0; padding: 16px; background: #f9fafb; border-left: 4px solid #1e3a8a; }
+      .highlight { background: #fef3c7; padding: 12px; border-radius: 4px; margin: 12px 0; }
+      .gstin-table { margin: 16px 0; }
+      .gstin-table th, .gstin-table td { padding: 6px; font-size: 11px; }
+      .footer { margin-top: 32px; padding-top: 16px; border-top: 1px solid #e5e7eb; font-size: 12px; color: #6b7280; }
+      ul { margin: 8px 0 8px 20px; }
+      li { margin: 4px 0; }
+      strong { color: #1f2937; }
+      .contact-info { background: #eff6ff; padding: 12px; border-radius: 4px; margin: 12px 0; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <p>Dear Team,</p>
+      <p><strong>Namaste & Greetings from World Choice Hotels Pvt. Ltd.</strong></p>
+      
+      <p>Guest Checkout Summary Report for <strong>{{Hotel_Name}}, {{City}}, {{State}}</strong> generated on <strong>{{Date}}</strong> at <strong>{{Time}}</strong>.</p>
+      
+      <p>This report contains all checked-out guests, their booking details, payment mode, and invoice references. Kindly verify, file the invoices, and confirm receipt.</p>
+
+      <h2>Hotel Information</h2>
+      <p><strong>Hotel Name:</strong> {{Hotel_Name}}</p>
+      <p><strong>City:</strong> {{City}}</p>
+      <p><strong>State:</strong> {{State}}</p>
+      <p><strong>Country:</strong> {{Country}}</p>
+      <p><strong>Contact Person:</strong> {{Hotel_Contact_Person}}</p>
+      <p><strong>Hotel Email ID:</strong> {{Hotel_Email}}</p>
+      <p><strong>Hotel Phone Number:</strong> {{Hotel_Phone}}</p>
+
+      <h2>List of Checking-Out Guests</h2>
+      <p>Please find below the list of guests who checked out on <strong>{{Date}}</strong>:</p>
+      
+      <table>
+        <thead>
+          <tr>
+            <th>Guest Name</th>
+            <th>Booking ID</th>
+            <th>Type of Booking</th>
+            <th>Check-In</th>
+            <th>Check-Out</th>
+            <th>Room Type</th>
+            <th>No. of Rooms</th>
+            <th>Adults/Child</th>
+            <th>Attachments</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{GuestTableRows}}
+        </tbody>
+      </table>
+
+      <h2>Attached Invoices</h2>
+      <div class="section">
+        <p>All invoices are attached in PDF format with the following naming convention:</p>
+        <p><strong>Naming Convention for Attachments:</strong></p>
+        <ul>
+          <li><strong>BookingID-GuestName-CheckoutDate (Normal Invoice).pdf</strong></li>
+          <li><strong>BookingID-GuestName-CheckoutDate (GST Invoice).pdf</strong></li>
+        </ul>
+        <p><em>Example:</em> W2025102400001-AmitSharma-12Sep25 (Normal Invoice).pdf</p>
+        <p><em>Example:</em> W2025102400001-AmitSharma-12Sep25 (GST Invoice).pdf</p>
+      </div>
+
+      <h2>GST Invoice Instructions</h2>
+      <div class="highlight">
+        <p><strong>Important:</strong> All GST invoices must be issued in the name of <strong>World Choice Hotels Pvt. Ltd.</strong></p>
+        <p>Please use the <strong>correct GSTIN as per your hotel's state</strong> (see table below).</p>
+      </div>
+
+      <h3>GSTIN Table</h3>
+      <table class="gstin-table">
+        <thead>
+          <tr>
+            <th>State</th>
+            <th>GSTIN</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{GSTIN_Table}}
+        </tbody>
+      </table>
+
+      <h2>How to Raise & Upload GST Invoices</h2>
+      <div class="section">
+        <h4>1. GSTIN Selection:</h4>
+        <p>Select the GSTIN of <strong>World Choice Hotels Pvt. Ltd.</strong> according to your hotel's state.</p>
+        <ul>
+          <li>Example: Hotel in Assam uses <strong>18AABCW7108D1ZH</strong></li>
+          <li>Example: Hotel in Rajasthan uses <strong>08AABCW7108D1ZI</strong></li>
+        </ul>
+
+        <h4>2. Invoice Name and Address:</h4>
+        <ul>
+          <li>Invoice should be raised in the name of: <strong>World Choice Hotels Pvt. Ltd.</strong></li>
+          <li>Address: <strong>{{Company_Address}}</strong></li>
+        </ul>
+
+        <h4>3. Invoice Upload Methods:</h4>
+        <ul>
+          <li>Through your <strong>WorldCRS login</strong> or via the <strong>daily GST upload link</strong>.</li>
+          <li>Alternatively, by email to: <strong>gstinvoices@wchotels.com</strong> or <strong>accounts@wchotels.com</strong>.</li>
+          <li><strong>Email Subject Line for Invoices:</strong> Write the Booking ID in the subject line and mention booking details clearly.</li>
+          <li><strong>Recommendation:</strong> For smooth processing, uploading directly through CRS is highly recommended.</li>
+        </ul>
+      </div>
+
+      <h2>WorldCRS Login Instructions</h2>
+      <div class="section">
+        <ul>
+          <li>Login at <strong>www.worldcrs.com</strong> using your assigned credentials.</li>
+          <li>Contact support if login details are not received.</li>
+          <li><strong>CRS functionalities include:</strong>
+            <ul>
+              <li>Download & Upload GST Invoices</li>
+              <li>Check Booking & Payment Details</li>
+              <li>Upload Hotel Photos & Videos</li>
+              <li>View Guest Details & Reservation Summaries</li>
+              <li>Track Real-Time Reservations and Reports</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <h2>Summary Overview</h2>
+      <table>
+        <tbody>
+          <tr>
+            <td><strong>Total Guests:</strong></td>
+            <td>{{Total_Guests}}</td>
+          </tr>
+          <tr>
+            <td><strong>Total Rooms:</strong></td>
+            <td>{{Total_Rooms}}</td>
+          </tr>
+          <tr>
+            <td><strong>Total Nights:</strong></td>
+            <td>{{Total_Nights}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="footer">
+        <p>Please review the details and confirm invoice upload.</p>
+        
+        <div class="contact-info">
+          <p><strong>Accounts Team Contact for Clarification:</strong></p>
+          <p><strong>Emails:</strong> accounts@wchotels.com, partners@wchotels.com</p>
+          <p><strong>Phone numbers:</strong> +91 9954363505, +91 7399888844, +91 9999880803, +91 9999880833</p>
+        </div>
+
+        <p><strong>With Warm Regards,</strong><br/>
+        <strong>Accounts Department,</strong><br/>
+        <strong>{{Company_Name}}</strong></p>
+
+        <p><strong>Delhi Head Office Address:</strong><br/>
+        Samta Enclave, Near Mother Dairy, Qutub Vihar, Phase 1, Sector 19 Dwarka, New Delhi – 110071, India</p>
+
+        <p><strong>North East Office Address:</strong><br/>
+        Purna Saikia Complex, NH-37, Sonapur, Guwahati, Kamrup (Metro), Assam – 782402, India</p>
+
+        <p><strong>Websites:</strong> www.wchotels.com, www.worldchoicehotels.in</p>
+      </div>
+    </div>
+  </body>
+</html>
+

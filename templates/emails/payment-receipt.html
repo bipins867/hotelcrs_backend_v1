@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+</head>
+<body style="margin:0; padding:20px; font-family:Arial, Helvetica, sans-serif; background:#f5f6fa;">
+
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" align="center" style="max-width:800px; margin:auto; background:#ffffff; border:1px solid #e0e0e0; border-radius:8px;">
+    <tr>
+      <td style="padding:30px;">
+
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-bottom:1px solid #eaeaea; padding-bottom:15px; margin-bottom:20px;">
+          <tr>
+            <td align="left">
+              <img src="cid:companylogo" alt="{{companyName}} Logo" style="max-width:160px;">
+            </td>
+            <td align="right" style="font-size:24px; color:#444; font-weight:600;">
+              Admin Payment Receipt
+            </td>
+          </tr>
+        </table>
+
+        <!-- Booking Info -->
+        <table width="100%" cellpadding="5" cellspacing="0" border="0" style="margin-bottom:20px; font-size:14px; color:#333;">
+          <tr><td>Booking ID: <strong>{{bookingId}}</strong></td></tr>
+          <tr><td>Invoice Number: <strong>{{invoiceNumber}}</strong></td></tr>
+          <tr><td>Date: <strong>{{paymentDate}}</strong></td></tr>
+        </table>
+
+        <h3 style="font-size:18px; color:#555; margin:20px 0 10px; border-bottom:1px solid #ddd; padding-bottom:5px;">Guest Information</h3>
+        <table width="100%" cellpadding="6" cellspacing="0" border="0" style="font-size:14px; color:#333;">
+          <tr><td width="200" style="color:#777;">Guest Name:</td><td><strong>{{customerName}}</strong></td></tr>
+          <tr><td style="color:#777;">Guest Phone No:</td><td><strong>{{customerPhone}}</strong></td></tr>
+          <tr><td style="color:#777;">Guest Email ID:</td><td><a href="mailto:{{customerEmail}}" style="color:#007bff; text-decoration:none;">{{customerEmail}}</a></td></tr>
+        </table>
+
+        <h3 style="font-size:18px; color:#555; margin:20px 0 10px; border-bottom:1px solid #ddd; padding-bottom:5px;">Payment Details</h3>
+        <table width="100%" cellpadding="6" cellspacing="0" border="0" style="font-size:14px; color:#333;">
+          <tr><td width="200" style="color:#777;">Hotel Name:</td><td align="right"><strong>{{hotelName}}</strong></td></tr>
+          <tr><td style="color:#777;">Hotel City, State, Country:</td><td align="right"><strong>{{hotelLocation}}</strong></td></tr>
+          <tr><td style="color:#777;">Transaction Date:</td><td align="right"><strong>{{transactionDate}}</strong></td></tr>
+          <tr><td style="color:#777;">Mode of Payment:</td><td align="right"><strong>{{paymentMode}}</strong></td></tr>
+          <tr><td style="color:#777;">Payment Status:</td><td align="right"><strong>{{paymentStatus}}</strong></td></tr>
+          <tr><td style="color:#777;">Transaction Amount:</td><td align="right"><strong>{{transactionAmount}}</strong></td></tr>
+          <tr><td style="color:#777;">Bank Reference ID:</td><td align="right"><strong>{{bankReference}}</strong></td></tr>
+          <tr><td style="color:#777;">GST Number:</td><td align="right"><strong>{{gstNumber}}</strong></td></tr>
+          <tr><td style="color:#777;">Name on GST:</td><td align="right"><strong>{{gstName}}</strong></td></tr>
+          <tr><td style="color:#777;">GST Address:</td><td align="right"><strong>{{gstAddress}}</strong></td></tr>
+        </table>
+
+        <table width="100%" cellpadding="8" cellspacing="0" border="0" style="margin-top:20px; border-top:1px solid #eaeaea; font-size:14px; color:#333;">
+          <tr><td style="color:#777;">Amount in Words:</td><td><strong>{{amountInWords}}</strong></td></tr>
+        </table>
+
+        <!-- Customer Care -->
+        <h3 style="font-size:18px; color:#555; margin:30px 0 10px; border-bottom:1px solid #ddd; padding-bottom:5px;">Customer Care Info</h3>
+        <table width="100%" cellpadding="10" cellspacing="0" border="0" style="border:1px solid #e0e0e0; border-radius:6px; font-size:14px; margin-bottom:20px;">
+          <tr>
+            <td width="180" align="center" style="border-right:1px solid #e9ecef;">
+              <img src="cid:companylogo" alt="{{companyName}} Logo" style="max-width:120px;">
+            </td>
+            <td width="280" style="border-right:1px solid #e9ecef;">
+              <strong>{{companyName}}</strong><br>
+              {{companyAddress}}
+            </td>
+            <td>
+              <strong>Contact Us:</strong><br>
+              Tel: {{companyPhone}}<br>
+              Email: <a href="mailto:{{companyEmail}}" style="color:#007bff; text-decoration:none;">{{companyEmail}}</a>
+            </td>
+          </tr>
+        </table>
+
+        <p style="font-size:13px; color:#777; border-top:1px solid #e0e0e0; padding-top:15px; line-height:1.6;">
+          <strong>Declaration:</strong> We declare that this invoice shows the actual price of the goods described and that all particulars are true and correct.
+        </p>
+
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>

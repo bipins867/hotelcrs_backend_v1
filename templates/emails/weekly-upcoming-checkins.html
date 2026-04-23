@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      body { font-family: Arial, Helvetica, sans-serif; color: #222; }
+      .container { margin: 0 auto; }
+      h1 { font-size: 18px; margin: 0 0 10px; }
+      h2 { font-size: 16px; margin: 18px 0 8px; }
+      table { width: 100%; border-collapse: collapse; }
+      th, td { border: 1px solid #ccc; padding: 6px; font-size: 12px; }
+      th { background: #f3f3f3; text-align: left; }
+      .day { margin: 12px 0; }
+      .day-title { font-weight: bold; margin: 8px 0; }
+      .note { font-size: 12px; color: #666; }
+      .divider { height: 1px; background: #e5e5e5; margin: 16px 0; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <p>Dear Reservations Team,</p>
+      <p><strong>Namaste & Greetings from World Choice Hotels !!</strong></p>
+      <p>Please find below the <strong>5 Days Guest Check-In Report</strong> for the period {{StartDate}} to {{EndDate}}. This report is for internal use by the <strong>World Choice Central Reservations Team</strong> to track upcoming arrivals and ensure timely guest follow-ups.</p> 
+
+      <h2>Upcoming Check-ins (Next 5 Days)</h2>
+      {{DaysHTML}}
+
+      <div class="divider"></div>
+      {{NotesHTML}}
+
+      <div class="divider"></div>
+      <p><strong>With Regards,</strong></p>
+      <p><strong>
+        World Choice Hotels Pvt. Ltd.
+        </strong>
+      </p>  
+      <p><strong>
+        Centralized Reservations Team
+        </strong>
+      </p>
+      <br>
+      <p>
+        ☎️ +91 9954363505, 7399888822, 9999880833, 9998808803</p>
+      <p>
+        ✉️ <strong>reservations@wchotels.com</strong> | <strong>partner@wchotels.com</strong></p>
+      <p>
+        🌐 <strong>www.wchotels.com</strong> | <strong>www.worldchoicehotels.com</strong>
+      </p>
+      <br>
+      <p>
+        <strong>Delhi Head Office:</strong><br>
+        Samta Enclave, Near Mother Dairy, Qutub Vihar, Phase 1, Sector 19 Dwarka, New Delhi-110071, India
+      </p>
+      <p>
+        <strong>North East Office:</strong><br>
+        Purna Saikia Complex, NH–37, Sonapur, Guwahati, Kamrup (Metro), Assam - 782402, India
+      </p>
+    </div>
+  </body>
+  </html>
+
+

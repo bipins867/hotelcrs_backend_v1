@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      body { font-family: Arial, Helvetica, sans-serif; }
+      .container { margin: 0 auto; }
+      h1 { font-size: 18px; margin: 0 0 10px; }
+      h2 { font-size: 16px; margin: 20px 0 8px; }
+      h3 { font-size: 14px; margin: 14px 0 6px; }
+      p { margin: 6px 0; }
+      table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+      th, td { border: 1px solid #ccc; padding: 6px; font-size: 12px; }
+      th { background: #f3f3f3; text-align: left; }
+      .note { font-size: 12px; color: #555; }
+      .muted { color: #666; }
+      .divider { height: 1px; background: #e5e5e5; margin: 16px 0; }
+      .pill { display: inline-block; background: #eef5ff; border: 1px solid #d7e6ff; padding: 2px 6px; border-radius: 4px; font-size: 11px; }
+      ul { margin: 8px 0 8px 18px; }
+      li { margin: 4px 0; }
+      .section-title { display: flex; align-items: center; gap: 6px; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <p>Dear Team,</p>
+      <p><strong>Namaste & Greetings from World Choice Hotels !!</strong></p>
+      <p>
+        Please find below the <strong>Daily Check-In & Booking Report</strong> for {{HotelName}}, {{City}}, {{State}} generated on {{Date}} at {{Time}}.
+      </p>
+
+      <h2 class="section-title">1) Today’s Check‑In List (Including New & Modified)</h2>
+      {{CheckinSection}}
+
+      <h2 class="section-title">✖️ 2) Cancelled Bookings (For Reference)</h2>
+      <p class="note">These bookings have been cancelled in WorldCRS. Please check your records and ensure no rooms are blocked.</p>
+      {{CancelledSection}}
+
+      <h2 class="section-title">📝 3) Daily Booking Report (Newly Created Today)</h2>
+      {{NewBookingSection}}
+
+      <div class="divider"></div>
+      <h2 class="section-title">📄 GST Invoice Instructions</h2>
+      <p>All GST invoices must be issued in the name of <strong>World Choice Hotels Pvt. Ltd.</strong> Please use the correct <strong>GSTIN</strong> as per your hotel’s <strong>State</strong>.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>State</th>
+            <th>GSTIN</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Rajasthan</td><td>08AABCW7108D1Z1</td><td>Active</td></tr>
+          <tr><td>Haryana</td><td>06AABCW7108D1ZM</td><td>Active</td></tr>
+          <tr><td>Karnataka</td><td>29AABCW7108D1ZE</td><td>Active</td></tr>
+          <tr><td>Meghalaya</td><td>17AABCW7108D1ZJ</td><td>Active</td></tr>
+          <tr><td>Uttar Pradesh</td><td>09AABCW7108D1ZG</td><td>Active</td></tr>
+          <tr><td>Arunachal Pradesh</td><td>12AABCW7108D1ZT</td><td>Active</td></tr>
+          <tr><td>Delhi</td><td>07AABCW7108D1ZK</td><td>Active</td></tr>
+          <tr><td>Jammu &amp; Kashmir</td><td>01AABCW7108D1ZW</td><td>Inactive</td></tr>
+          <tr><td>West Bengal</td><td>19AABCW7108D1ZF</td><td>Active</td></tr>
+          <tr><td>Assam</td><td>18AABCW7108D1ZH</td><td>Active</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="section-title">🧾 How to Raise & Upload GST Invoices</h3>
+      <ol>
+        <li>Select the <strong>GSTIN of World Choice Hotels Pvt. Ltd.</strong> as per your hotel’s state.
+          <ul>
+            <li>Example: Hotel in Assam → use <strong>18AABCW7108D1ZH</strong></li>
+            <li>Hotel in Rajasthan → use <strong>08AABCW7108D1Z1</strong></li>
+          </ul>
+        </li>
+        <li>Raise the invoice in the name of:<br/>
+          <strong>World Choice Hotels Pvt. Ltd., Samta Enclave, Near Mother Dairy, Qutub Vihar, Phase 1, Sector 19 Dwarka, New Delhi – 110071, India</strong>
+        </li>
+        <li><strong>Upload invoices</strong> after guest check‑out using your <strong>WorldCRS</strong> login or via the daily <strong>GST upload link</strong>.</li>
+        <li>Alternatively, you may also send GST invoices by email to:<br/>
+          <strong>gstinvoices@wchotels.com</strong> | <strong>accounts@wchotels.com</strong><br/>
+          Please write the <strong>Booking ID in Subject Line</strong> and mention booking details clearly.
+        </li>
+        <li class="note">For clarity and smooth processing, we strongly recommend uploading invoices directly in CRS.</li>
+      </ol>
+
+      <div class="divider"></div>
+      <h2 class="section-title">🔒 WorldCRS Login Instructions</h2>
+      <ul>
+        <li>You can log in to <strong>www.worldcrs.com</strong> with your User ID & Password.</li>
+        <li>If you have not received login credentials, please contact us immediately.</li>
+        <li>With CRS Login, you can:
+          <ul>
+            <li>Download & Upload GST Invoices</li>
+            <li>Check Booking & Payment Details</li>
+            <li>Upload Hotel Photos & Videos</li>
+            <li>View Guest Details & Reservation Summaries</li>
+            <li>Track Real‑Time Reservations and more</li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="divider"></div>
+      <h2 class="section-title">📌 Final Notes</h2>
+      <ol>
+        <li>This report is generated automatically from <strong>WorldCRS</strong> at <strong>9:00 AM</strong>, <strong>4:00 PM</strong>, and <strong>11:00 PM</strong>.</li>
+        <li>Please check <strong>Check‑In</strong>, <strong>New Bookings</strong>, <strong>Modified Bookings</strong>, and <strong>Cancelled Bookings</strong> carefully.</li>
+        <li>Cancelled bookings are added for your convenience to avoid errors.</li>
+        <li>Ensure <strong>GST invoices are uploaded daily</strong> after guest check‑out.</li>
+      </ol>
+
+      <div class="divider"></div>
+      <p><strong>With Regards,</strong></p>
+      <p><strong>
+        World Choice Hotels Pvt. Ltd.
+        </strong>
+      </p>  
+      <p><strong>
+        Centralized Reservations Team
+        </strong>
+      </p>
+      <br>
+      <p>
+        ☎️ +91 9954363505, 7399888822, 9999880833, 9998808803</p>
+      <p>
+        ✉️ <strong>reservations@wchotels.com</strong> | <strong>partner@wchotels.com</strong></p>
+      <p>
+        🌐 <strong>www.wchotels.com</strong> | <strong>www.worldchoicehotels.com</strong>
+      </p>
+      <br>
+      <p>
+        <strong>Delhi Head Office:</strong><br>
+        Samta Enclave, Near Mother Dairy, Qutub Vihar, Phase 1, Sector 19 Dwarka, New Delhi-110071, India
+      </p>
+      <p>
+        <strong>North East Office:</strong><br>
+        Purna Saikia Complex, NH–37, Sonapur, Guwahati, Kamrup (Metro), Assam - 782402, India
+      </p>
+    </div>
+  </body>
+  </html>
+
+
