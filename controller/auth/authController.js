@@ -26,8 +26,11 @@ module.exports = {
 
             // Proceed with user creation
             const newUser = await User.create({ name, email, password: hashedPassword });
-            successResponse(res, `${resourceName} created successfully`, newUser, 201);
+            const createdUserData = newUser.toJSON();
+            delete createdUserData.password;
+            successResponse(res, `${resourceName} created successfully`, createdUserData, 201);
         } catch (error) {
+            console.error('Error during signUp:', error);
             errorResponse(res, `Error during ${resourceName} creation`, error.message, 500);
         }
     },
@@ -76,7 +79,9 @@ module.exports = {
 
             successResponse(res, `${resourceName} login successful`, userDetails, 200);
         } catch (error) {
+            console.error('Error during signIn:', error);
             errorResponse(res, `Error during ${resourceName} login`, error.message);
         }
     }
 };
+
